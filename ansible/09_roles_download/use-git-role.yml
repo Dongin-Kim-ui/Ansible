@@ -1,0 +1,9 @@
+---
+- name: 역할 설치
+  hosts: web1
+  gather_facts: yes
+  remote_user: devops
+  become: true
+
+  roles:
+  - davidkarban.git

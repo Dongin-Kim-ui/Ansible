@@ -1,0 +1,12 @@
+---
+- name: 복구 작업
+  hosts: all
+  gather_facts: false
+
+  tasks:
+    - name: Remove package
+      yum:
+        name:
+          - httpd
+          - mariadb-server
+        state: absent

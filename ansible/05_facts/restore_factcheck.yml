@@ -1,0 +1,25 @@
+---
+- name : 웹 서버 복구 작업
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: 방화벽 포트 제거
+      firewalld:
+          service: http
+          permanent: true
+          immediate: true
+          state: disabled  
+
+    - name: 패키지 제거
+      dnf:
+        name: httpd
+        state: absent
+
+    - name: 파일 삭제
+      file:
+        path: /var/www/html/index.html
+        state: absent
+
+
+
+

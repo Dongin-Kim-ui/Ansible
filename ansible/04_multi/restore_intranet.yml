@@ -1,0 +1,22 @@
+---
+- name: 웹 서버 설정 및 점검
+  hosts: web1
+  tasks:
+    - name: 방화벽/웹 서비스 제거
+      yum:
+        name: httpd
+        state: absent
+
+
+    - name: 방화벽/웹 서비스 제거
+      service:
+        name: httpd
+        state: absent
+        enabled: no
+
+    - name: 방화벽에 웹서비스 제거
+      firewalld:
+        service: http
+        permanent: true
+        immediate: true
+        state: absent

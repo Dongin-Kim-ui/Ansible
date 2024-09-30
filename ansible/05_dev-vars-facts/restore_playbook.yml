@@ -1,0 +1,15 @@
+---
+- name: 복구 playbook.yml
+  hosts: all
+  gather_facts: false
+  vars:
+    fact_dir: /etc/ansible/facts.d
+  tasks:
+    - name: 디렉토리 삭제 - {{ fact_dir }}
+      file:
+        path: "{{ fact_dir  }}"
+        state: absent
+
+
+
+
